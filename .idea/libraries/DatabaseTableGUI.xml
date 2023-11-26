@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="DatabaseTableGUI">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/DatabaseTableGUI/out/artifacts/DatabaseTableGUI_jar/DatabaseTableGUI.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
