@@ -1,10 +1,10 @@
 # DatabaseTableGUI
-A Database table with javax.swing where you can Add,Remove,Search for Available data based on ID and Sort 
+A Database table using javax.swing and java.awt where you can Add,Remove,Search for Available data based on ID and Sort 
 
 ---
 ## App class
-Here is where we make connection with the Database and initialize
-a new Frame with a TableModel.
+Here is where we use the information for the database to connect to the Service,
+and also initialize  a new Frame with a TableModel.
 
 ![img.png](img.png)
 * In the picture it's without password,otherwise there is one :)
@@ -135,6 +135,49 @@ allows to show all the entries.
 ### autoResizeColumn method
 
 Used for more dynamic resizing of the different columns.
+
+---
+## Service
+
+This is where we make connection with the database if possible and use it.
+In every method,first we try to make a connection and when successful ,the
+intended operation is done,otherwise we get an information about the error.
+SQL queries are used to manipulate the Database.
+
+### insert command:
+In the **save(Student student)** method we add a new entry to the database,which is executed 
+after we use valid characters for the ID,Names and Department in the **Add button**.
+
+![img_24.png](img_24.png)
+
+### find commands:
+
+**findall(page,pageSize)** is used to get all the students from the database.
+![img_25.png](img_25.png)
+
+**find(id)** is almost the same,but 
+It's used to get only the student with the given ID. **Exists(id)** is also simular,
+but it returns a boolean value(if a student with this ID exists,it returns true ,otherwise
+its false).
+
+### count commands:
+Returns the number of entries in the database.
+
+![img_26.png](img_26.png)
+
+**countOne(id)** returns only 1 or 0(if a student with **id** exists ,its **1** otherwise it returns **0**).
+
+### order commands:
+Used to order the data based on either ID,First or Last Name ,or Department.
+
+Order by ID:
+
+![img_27.png](img_27.png)
+
+### remove command:
+Delete a student with this **ID** from the Database - **remove(id)**) .
+
+![img_28.png](img_28.png)
 
 ---
 

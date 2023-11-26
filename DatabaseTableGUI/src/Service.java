@@ -430,7 +430,7 @@ public class Service {
 
             preparedStatement = connection.prepareStatement("DELETE FROM students where Student_ID=?");
             preparedStatement.setLong(1, id);
-            int rs = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
 
             connection.commit();
             connection.setAutoCommit(true);
