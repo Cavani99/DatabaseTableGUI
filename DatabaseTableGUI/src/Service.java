@@ -14,17 +14,17 @@ public class Service {
     }
 
 
-    public void save(Student student) {
+    public void save(Entity entity) {
         try {
             connection = dataSource.getConnection();
             connection.setAutoCommit(false);
             String sql = "INSERT INTO students VALUES (?, ?, ?, ?)";
             preparedStatement = connection.prepareStatement(sql);
 
-                preparedStatement.setLong(1, student.getId());
-                preparedStatement.setString(2, student.getFirstName());
-                preparedStatement.setString(3, student.getLastName());
-                preparedStatement.setString(4, student.getDepartment());
+                preparedStatement.setLong(1, entity.getId());
+                preparedStatement.setString(2, entity.getFirstName());
+                preparedStatement.setString(3, entity.getLastName());
+                preparedStatement.setString(4, entity.getDepartment());
                 preparedStatement.executeUpdate();
 
 
@@ -46,11 +46,11 @@ public class Service {
         }
     }
 
-    public List<Student> findAll(int page, int pageSize) {
-        List<Student> studentList = new ArrayList<Student>();
+    public List<Entity> findAll(int page, int pageSize) {
+        List<Entity> entityList = new ArrayList<>();
 
         if (count() == 0) {
-            return studentList;
+            return entityList;
         }
         try {
             connection = dataSource.getConnection();
@@ -62,12 +62,12 @@ public class Service {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                Student p = new Student();
+                Entity p = new Entity();
                 p.setId(rs.getLong("Student_ID"));
                 p.setFirstName(rs.getString("First_Name"));
                 p.setLastName(rs.getString("Last_Name"));
                 p.setDepartment(rs.getString("Department"));
-                studentList.add(p);
+                entityList.add(p);
             }
 
             connection.commit();
@@ -86,15 +86,15 @@ public class Service {
             } catch (SQLException exClose) {
                 exClose.printStackTrace();
             }
-            return studentList;
+            return entityList;
         }
     }
 
-    public List<Student> find(long id) {
-        List<Student> studentList = new ArrayList<Student>();
+    public List<Entity> find(long id) {
+        List<Entity> entityList = new ArrayList<Entity>();
 
         if (count() == 0) {
-            return studentList;
+            return entityList;
         }
         try {
             connection = dataSource.getConnection();
@@ -105,12 +105,12 @@ public class Service {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                Student p = new Student();
+                Entity p = new Entity();
                 p.setId(rs.getLong("Student_ID"));
                 p.setFirstName(rs.getString("First_Name"));
                 p.setLastName(rs.getString("Last_Name"));
                 p.setDepartment(rs.getString("Department"));
-                studentList.add(p);
+                entityList.add(p);
             }
 
             connection.commit();
@@ -129,11 +129,11 @@ public class Service {
             } catch (SQLException exClose) {
                 exClose.printStackTrace();
             }
-            return studentList;
+            return entityList;
         }
     }
     public boolean Exists(long id) {
-        List<Student> studentList = new ArrayList<Student>();
+        List<Entity> entityList = new ArrayList<>();
         int found=0;
 
         try {
@@ -145,12 +145,12 @@ public class Service {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                Student p = new Student();
+                Entity p = new Entity();
                 p.setId(rs.getLong("Student_ID"));
                 p.setFirstName(rs.getString("First_Name"));
                 p.setLastName(rs.getString("Last_Name"));
                 p.setDepartment(rs.getString("Department"));
-                studentList.add(p);
+                entityList.add(p);
                 found++;
             }
 
@@ -242,11 +242,11 @@ public class Service {
         }
     }
 
-    public List<Student> OrderByID(int page, int pageSize) {
-        List<Student> studentList = new ArrayList<Student>();
+    public List<Entity> OrderByID(int page, int pageSize) {
+        List<Entity> entityList = new ArrayList<>();
 
         if (count() == 0) {
-            return studentList;
+            return entityList;
         }
         try {
             connection = dataSource.getConnection();
@@ -258,12 +258,12 @@ public class Service {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                Student p = new Student();
+                Entity p = new Entity();
                 p.setId(rs.getLong("Student_ID"));
                 p.setFirstName(rs.getString("First_Name"));
                 p.setLastName(rs.getString("Last_Name"));
                 p.setDepartment(rs.getString("Department"));
-                studentList.add(p);
+                entityList.add(p);
             }
 
             connection.commit();
@@ -282,15 +282,15 @@ public class Service {
             } catch (SQLException exClose) {
                 exClose.printStackTrace();
             }
-            return studentList;
+            return entityList;
         }
     }
 
-    public List<Student> OrderByName(int page, int pageSize) {
-        List<Student> studentList = new ArrayList<Student>();
+    public List<Entity> OrderByName(int page, int pageSize) {
+        List<Entity> entityList = new ArrayList<>();
 
         if (count() == 0) {
-            return studentList;
+            return entityList;
         }
         try {
             connection = dataSource.getConnection();
@@ -302,12 +302,12 @@ public class Service {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                Student p = new Student();
+                Entity p = new Entity();
                 p.setId(rs.getLong("Student_ID"));
                 p.setFirstName(rs.getString("First_Name"));
                 p.setLastName(rs.getString("Last_Name"));
                 p.setDepartment(rs.getString("Department"));
-                studentList.add(p);
+                entityList.add(p);
             }
 
             connection.commit();
@@ -326,15 +326,15 @@ public class Service {
             } catch (SQLException exClose) {
                 exClose.printStackTrace();
             }
-            return studentList;
+            return entityList;
         }
     }
 
-    public List<Student> OrderByLastName(int page, int pageSize) {
-        List<Student> studentList = new ArrayList<Student>();
+    public List<Entity> OrderByLastName(int page, int pageSize) {
+        List<Entity> entityList = new ArrayList<Entity>();
 
         if (count() == 0) {
-            return studentList;
+            return entityList;
         }
         try {
             connection = dataSource.getConnection();
@@ -346,12 +346,12 @@ public class Service {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                Student p = new Student();
+                Entity p = new Entity();
                 p.setId(rs.getLong("Student_ID"));
                 p.setFirstName(rs.getString("First_Name"));
                 p.setLastName(rs.getString("Last_Name"));
                 p.setDepartment(rs.getString("Department"));
-                studentList.add(p);
+                entityList.add(p);
             }
 
             connection.commit();
@@ -370,15 +370,15 @@ public class Service {
             } catch (SQLException exClose) {
                 exClose.printStackTrace();
             }
-            return studentList;
+            return entityList;
         }
     }
 
-    public List<Student> OrderByDepartment(int page, int pageSize) {
-        List<Student> studentList = new ArrayList<Student>();
+    public List<Entity> OrderByDepartment(int page, int pageSize) {
+        List<Entity> entityList = new ArrayList<>();
 
         if (count() == 0) {
-            return studentList;
+            return entityList;
         }
         try {
             connection = dataSource.getConnection();
@@ -390,12 +390,12 @@ public class Service {
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                Student p = new Student();
+                Entity p = new Entity();
                 p.setId(rs.getLong("Student_ID"));
                 p.setFirstName(rs.getString("First_Name"));
                 p.setLastName(rs.getString("Last_Name"));
                 p.setDepartment(rs.getString("Department"));
-                studentList.add(p);
+                entityList.add(p);
             }
 
             connection.commit();
@@ -414,15 +414,15 @@ public class Service {
             } catch (SQLException exClose) {
                 exClose.printStackTrace();
             }
-            return studentList;
+            return entityList;
         }
     }
 
-    public List<Student> remove(long id) {
-        List<Student> studentList = new ArrayList<Student>();
+    public List<Entity> remove(long id) {
+        List<Entity> entityList = new ArrayList<>();
 
         if (count() == 0) {
-            return studentList;
+            return entityList;
         }
         try {
             connection = dataSource.getConnection();
@@ -448,7 +448,7 @@ public class Service {
             } catch (SQLException exClose) {
                 exClose.printStackTrace();
             }
-            return studentList;
+            return entityList;
         }
     }
 }

@@ -4,37 +4,37 @@ import java.util.List;
 
 public class TableModel extends AbstractTableModel {
 
-    List<Student> studentList = new ArrayList<Student>();
+    List<Entity> entityList = new ArrayList<>();
     private final String[] HEADER = {"ID", "First Name", "Last Name", "Departments"};
 
-    public void setList(List<Student> listProduct) {
-        this.studentList = listProduct;
+    public void setList(List<Entity> listProduct) {
+        this.entityList = listProduct;
     }
 
-    public void save(Student student) {
-        studentList.add(student);
+    public void save(Entity entity) {
+        entityList.add(entity);
         fireTableRowsInserted(getRowCount() - 1, getRowCount() - 1);
     }
 
-    public void edit(int index, Student student) {
-        studentList.set(index, student);
+    public void edit(int index, Entity entity) {
+        entityList.set(index, entity);
         fireTableRowsUpdated(index, index);
     }
 
     public void delete(int index) {
-        studentList.remove(index);
+        entityList.remove(index);
         fireTableRowsDeleted(index, index);
     }
 
-    public Student findOne(int index) {
-        return studentList.get(index);
+    public Entity findOne(int index) {
+        return entityList.get(index);
     }
 
     public boolean findById(long id){
 
-        for(int i=0;i<studentList.size();i++){
+        for(int i = 0; i< entityList.size(); i++){
 
-            if( studentList.get(i).getId()==id){
+            if( entityList.get(i).getId()==id){
                 return  true;
             }
         }
@@ -43,7 +43,7 @@ public class TableModel extends AbstractTableModel {
     }
 
     public int getRowCount() {
-        return studentList.size();
+        return entityList.size();
     }
 
     public int getColumnCount() {
@@ -55,7 +55,7 @@ public class TableModel extends AbstractTableModel {
     }
 
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Student product = studentList.get(rowIndex);
+        Entity product = entityList.get(rowIndex);
 
         switch (columnIndex) {
             case 0:
